@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>迪卡侬趣味运动答题赢优惠券</title>
+    <script type="text/javascript" src="js/script.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <script src="lib/clipboard/dist/clipboard.min.js"></script>
+    <link rel="icon"href="https://static.box3.codemao.cn/block/QmduYYtYFFLzFZG6N8KUKrE9QJLB3APe7Hi9jq6cJT5JB8_cover_0_0.png" type="image/x-icon" /> 
+</head>
+  
+<body>
+    <script>
+        function myFun() {
+            copyText('快来领取迪卡侬20-5优惠券\n答对所有题就能获得!!!\n链接:https://5047bda9-preview.lightly.teamcode.com/Decathlon-Questions-and-Answers/index.html?server=preview&dcsId=5047bda9&token=CFDUEz2cTEKqO-svNSUsxw#');
+            alert('复制完成\n快去转发吧!!!')
+        }
+    </script>
+    <div class="header">
+        <h1>迪卡侬趣味运动答题赢取优惠券</h1>
+    </div>
+    <div class="navbar">
+        <a href="#">评论</a>
+        <a onclick="myFun(this)">转发</a>
+        <a onclick="jss()">介绍</a>
+        <a href="#" class="right">答题</a>
+        <a href="#" class="right">优惠卷</a>
+
+    </div>
+    <div class="main">
+        <h2>答题</h2>
+        <div class="fakeimg" style="height:250px;">
+            <div class="nihong">
+                <form>
+                    <div class="divCss">
+                        1.一个羽毛球上有多少根羽毛? ()
+                        <ol type="A" start="" class="olCss" name="single" >
+                            <input class="inputClass" type="radio" name="place1" value="A" checked="checked" /><li class="liRight">14</li>
+                            <input class="inputClass" type="radio" name="place1" value="B" /><li class="liRight">15</li>
+                            <input class="inputClass" type="radio" name="place1" value="C" /><li class="liRight">16</li>
+                        </ol>
+                    </div>
+                    <div class="divCss">
+                        2.羽毛球运动起源于? ()
+                        <ol type="A" start="" class="olCss" name="single" >
+                            <input class="inputClass" type="radio" name="place2" value="A" checked="checked" /><li class="liRight">英国</li>
+                            <input class="inputClass" type="radio" name="place2" value="B" /><li class="liRight">泰国</li>
+                            <input class="inputClass" type="radio" name="place2" value="C" /><li class="liRight">中国</li>
+                        </ol>
+                    </div>
+                    <div class="divCss">
+                        3.2020年东京奥运会羽毛球男子单打冠军? ()
+                        <ol type="A" start="" class="olCss" name="single" >
+                            <input class="inputClass" type="radio" name="place3" value="A" checked="checked" /><li class="liRight">谌龙</li>
+                            <input class="inputClass" type="radio" name="place3" value="B" /><li class="liRight">安塞龙</li>
+                            <input class="inputClass" type="radio" name="place3" value="C" /><li class="liRight">李宗伟</li>
+                        </ol>
+                    </div>
+                    <p><button onclick="clickCounter();judgment();jus()" type="button">提交答案</button></p>
+                    <div id="result"></div>
+                </form>
+                <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+                <script type="text/javascript" src="js/script.js"></script>
+                <script>
+                    function sendMsg() {
+                        //题目数
+                        var singleSize = $("[name='single']").length;
+                        var multiSize = $("[name='multi']").length;
+                        //答案数组
+                        var answerArr = new Array(singleSize + multiSize);
+                        //单选答案
+                        $("[name='single']").each(function (index) {
+                        //放入答案
+                            var answer = $("input[name='place" + (index + 1) + "']:checked").val();
+                            answerArr[index] = answer;
+                        })
+                        //多选答案
+                        $("[name='multi']").each(function (index) {
+                            //拼接多选答案
+                            var multiAnswer = "";
+                            $("input[name='place" + (index + singleSize + 1) + "']:checked").each(function () {
+                                if ("checked" == $(this).attr("checked")) {
+                                    //拼接答案
+                                    multiAnswer = multiAnswer + $(this).attr('value');
+                                }
+                            })
+                            //放入答案
+                            answerArr[index + singleSize] = multiAnswer;
+                        })
+                        //在调试模式下的console中查看输出
+                        console.log(answerArr);
+                        //发送答案到服务器
+                    }
+                    function judgment(){
+                        // if (sessionStorage.clickcount<1){
+                        //     alert("你已答题过不可获得了")
+                        //     // return
+                        // }
+                        if(sessionStorage.clickcount==1){
+                            sendMsg()
+                            alert("你获得了一个 20-5元优惠卷 如果想打开可以点击答题")
+                        }
+                    }
+                    function jus(){
+                        if(sessionStorage.clickcount<1){
+                            // sendMsg()
+                            alert("你已答题过!!!")
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
